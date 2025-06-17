@@ -75,7 +75,7 @@ export const translateStatus = (status: 'pendente' | 'em_analise' | 'resolvida' 
 /**
  * Submit form to Google Script and handle response
  */
-export const submitFormToGoogleScript = async (url: string, data: Record<string, unknown>): Promise<{ success: boolean, message: string }> => {
+export const submitFormToGoogleScript = async (url: string, data: FormData): Promise<{ success: boolean, message: string }> => {
   try {
     const response = await fetch(url, {
       method: 'POST',

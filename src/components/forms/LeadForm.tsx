@@ -43,7 +43,11 @@ const LeadForm = ({
     setError(null);
     
     try {
-      const result = await submitFormToGoogleScript(GOOGLE_SCRIPT_URL.LEAD_FORM, formData);
+      const fd = new window.FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        fd.append(key, value);
+      });
+      const result = await submitFormToGoogleScript(GOOGLE_SCRIPT_URL.LEAD_FORM, fd);
       
       if (result.success) {
         setSuccess(true);

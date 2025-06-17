@@ -53,7 +53,11 @@ export default function Camisa() {
     setError(null);
     
     try {
-      const result = await submitFormToGoogleScript(GOOGLE_SCRIPT_URL.CAMISA_FORM, formData);
+      const fd = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        fd.append(key, value);
+      });
+      const result = await submitFormToGoogleScript(GOOGLE_SCRIPT_URL.CAMISA_FORM, fd);
       
       if (result.success) {
         setSuccess(true);

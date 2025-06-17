@@ -79,7 +79,7 @@ const DenunciaForm = ({ onSuccess }: DenunciaFormProps) => {
         formDataToSend.append(`file${index}`, file);
       });
       
-      const result = await submitFormToGoogleScript(GOOGLE_SCRIPT_URL.DENUNCIA_FORM, { ...formData });
+      const result = await submitFormToGoogleScript(GOOGLE_SCRIPT_URL.DENUNCIA_FORM, formDataToSend);
       
       if (result.success) {
         setSuccess(true);
