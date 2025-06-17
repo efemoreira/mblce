@@ -3,12 +3,21 @@ import { motion } from 'framer-motion';
 import { submitFormToGoogleScript } from '@/utils/helpers';
 import { GOOGLE_SCRIPT_URL } from '@/utils/constants';
 
+interface DenunciaFormData {
+  name: string;
+  email: string;
+  title: string;
+  description: string;
+  location: string;
+  isPublic: boolean;
+}
+
 interface DenunciaFormProps {
-  onSuccess?: (data: any) => void;
+  onSuccess?: (data: DenunciaFormData) => void;
 }
 
 const DenunciaForm = ({ onSuccess }: DenunciaFormProps) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<DenunciaFormData>({
     name: '',
     email: '',
     title: '',
@@ -22,7 +31,7 @@ const DenunciaForm = ({ onSuccess }: DenunciaFormProps) => {
   
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target as HTMLInputElement;
@@ -46,14 +55,14 @@ const DenunciaForm = ({ onSuccess }: DenunciaFormProps) => {
     setAttachments(prev => prev.filter((_, i) => i !== index));
   };
   
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setError(null);
+    setSubmitError(null);
     
     // Validate required fields
     if (!formData.title || !formData.description) {
-      setError('Por favor, preencha todos os campos obrigatórios.');
+      setSubmitError('Por favor, preencha todos os campos obrigatórios.');
       setLoading(false);
       return;
     }
@@ -70,7 +79,7 @@ const DenunciaForm = ({ onSuccess }: DenunciaFormProps) => {
         formDataToSend.append(`file${index}`, file);
       });
       
-      const result = await submitFormToGoogleScript(GOOGLE_SCRIPT_URL.DENUNCIA_FORM, formData);
+      const result = await submitFormToGoogleScript(GOOGLE_SCRIPT_URL.DENUNCIA_FORM, { ...formData });
       
       if (result.success) {
         setSuccess(true);
@@ -90,10 +99,10 @@ const DenunciaForm = ({ onSuccess }: DenunciaFormProps) => {
         });
         setAttachments([]);
       } else {
-        setError(result.message);
+        setSubmitError(result.message);
       }
-    } catch (err) {
-      setError('Ocorreu um erro ao enviar a denúncia. Tente novamente mais tarde.');
+    } catch {
+      setSubmitError('Ocorreu um erro ao enviar a denúncia. Tente novamente mais tarde.');
     } finally {
       setLoading(false);
     }
@@ -121,10 +130,10 @@ const DenunciaForm = ({ onSuccess }: DenunciaFormProps) => {
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
-          {error && (
+          {submitError && (
             <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded mb-4">
               <p className="font-medium">Erro ao enviar denúncia</p>
-              <p>{error}</p>
+              <p>{submitError}</p>
             </div>
           )}
           
@@ -280,7 +289,7 @@ const DenunciaForm = ({ onSuccess }: DenunciaFormProps) => {
               type="submit"
               disabled={loading}
               className={`w-full bg-primary text-black py-3 font-bold rounded-md transition-colors ${
-                loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-yellow-500'
+                loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-primary-dark hover:text-white'
               }`}
             >
               {loading ? 'Enviando...' : 'Enviar Denúncia'}

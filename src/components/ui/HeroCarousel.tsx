@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperClass } from 'swiper';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -26,28 +27,15 @@ interface HeroCarouselProps {
 
 const HeroCarousel = ({ slides }: HeroCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef<any>(null);
+  const [swiperInstance, setSwiperInstance] = useState<SwiperClass | null>(null);
 
-  const handleSlideChange = (swiper: any) => {
+  const handleSlideChange = (swiper: SwiperClass) => {
     setActiveIndex(swiper.activeIndex);
   };
-
-  useEffect(() => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.on('slideChange', handleSlideChange);
-    }
-    
-    return () => {
-      if (swiperRef.current && swiperRef.current.swiper) {
-        swiperRef.current.swiper.off('slideChange', handleSlideChange);
-      }
-    };
-  }, []);
 
   return (
     <div className="relative h-[80vh] min-h-[500px] max-h-[800px] bg-black">
       <Swiper
-        ref={swiperRef}
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         effect="fade"
         spaceBetween={0}
@@ -57,33 +45,38 @@ const HeroCarousel = ({ slides }: HeroCarouselProps) => {
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop
         className="h-full"
+        onSlideChange={handleSlideChange}
+        onSwiper={swiper => {
+          setSwiperInstance(swiper);
+          setActiveIndex(swiper.activeIndex);
+        }}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={slide.id} className="relative">
             {/* Background Image */}
             <div 
-              className="absolute inset-0 bg-yellow-400 bg-opacity-70 bg-cover bg-center"
+              className="absolute inset-0 bg-primary bg-opacity-70 bg-cover bg-center"
               style={{
                 backgroundImage: `url(${slide.imageUrl})`,
                 opacity: 0.7
               }}
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0E3B6E] via-yellow-400/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-primary/70 to-transparent" />
             
             {/* Content */}
             <div className="relative h-full container mx-auto px-4 flex items-center">
               <motion.div 
-                className="max-w-2xl text-[#0E3B6E]"
+                className="max-w-2xl text-black"
                 initial={{ opacity: 0, y: 30 }}
                 animate={activeIndex === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-yellow-700 text-lg mb-2 font-semibold">{slide.subtitle}</h2>
+                <h2 className="text-secondary text-lg mb-2 font-semibold">{slide.subtitle}</h2>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">{slide.title}</h1>
-                <p className="text-lg md:text-xl mb-8 text-[#0E3B6E]">{slide.description}</p>
+                <p className="text-lg md:text-xl mb-8 text-black">{slide.description}</p>
                 <Link href={slide.buttonLink}>
-                  <span className="inline-block bg-yellow-500 text-[#0E3B6E] px-6 py-3 font-bold rounded hover:bg-yellow-400 transition-colors">
+                  <span className="inline-block bg-primary-dark text-white px-6 py-3 font-bold rounded hover:bg-primary transition-colors">
                     {slide.buttonText}
                   </span>
                 </Link>
@@ -98,7 +91,7 @@ const HeroCarousel = ({ slides }: HeroCarouselProps) => {
         {slides.map((slide, index) => (
           <button
             key={slide.id}
-            onClick={() => swiperRef.current?.swiper.slideTo(index)}
+            onClick={() => swiperInstance && swiperInstance.slideTo(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               activeIndex === index ? 'bg-primary w-8' : 'bg-white/50 hover:bg-white/80'
             }`}

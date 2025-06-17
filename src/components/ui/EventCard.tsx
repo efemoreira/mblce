@@ -26,7 +26,7 @@ const EventCard = ({ event, index = 0 }: EventCardProps) => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {event.isHighlight && (
-          <div className="absolute top-4 right-4 bg-yellow-500 text-black font-bold px-3 py-1 text-xs uppercase rounded border border-yellow-600">
+          <div className="absolute top-4 right-4 bg-primary text-black font-bold px-3 py-1 text-xs uppercase rounded border border-primary-dark">
             Destaque
           </div>
         )}
@@ -50,7 +50,7 @@ const EventCard = ({ event, index = 0 }: EventCardProps) => {
         
         <Link 
           href={event.link || '#'} 
-          className="inline-block bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all duration-300 shadow-md hover:shadow-lg"
+          className="inline-block bg-secondary text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-all duration-300 shadow-md hover:shadow-lg"
         >
           Ver detalhes
         </Link>

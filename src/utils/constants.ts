@@ -7,45 +7,68 @@ export const GOOGLE_SCRIPT_URL = {
 
 // Color theme
 export const THEME = {
-  PRIMARY: '#FFD600', // Amarelo MBL principal
-  SECONDARY: '#FFA000', // Amarelo mais escuro para contraste
-  ACCENT: '#FFEB3B', // Amarelo mais claro para destaques
-  BLACK: '#000000',   // Preto
-  WHITE: '#FFFFFF',   // Branco
-  
+  PRIMARY: '#fbd913', // Amarelo principal
+  PRIMARY_DARK: '#f1b921', // Amarelo queimado
+  SECONDARY: '#eb894f', // Laranja
+  ACCENT: '#47d1bc', // Ciano
+  BLACK: '#181818',   // Preto
+  WHITE: '#ffffff',   // Branco
+
   // Variações de amarelo
   YELLOW: {
-    50: '#FFFDE7',   // Amarelo muito claro
-    100: '#FFF9C4',  // Amarelo claro
-    200: '#FFF59D',  // Amarelo suave
-    300: '#FFF176',  // Amarelo médio claro
-    400: '#FFEE58',  // Amarelo médio
-    500: '#FFEB3B',  // Amarelo padrão
-    600: '#FFD600',  // Amarelo MBL (PRIMARY)
-    700: '#FFA000',  // Amarelo escuro
-    800: '#FF8F00',  // Amarelo mais escuro
-    900: '#FF6F00',  // Amarelo muito escuro
+    50: '#fffbe6',
+    100: '#fff6bf',
+    200: '#ffe066',
+    300: '#ffd633',
+    400: '#fbd913',
+    500: '#f1b921',
+    600: '#cfa10f',
+    700: '#a67c00',
   },
-  
-  // Escala de cinzas aprimorada
+
+  // Laranja
+  ORANGE: {
+    50: '#fff3e6',
+    100: '#ffe0cc',
+    200: '#ffc299',
+    300: '#ffad80',
+    400: '#eb894f',
+    500: '#c96c2b',
+    600: '#a6531a',
+    700: '#7a3a0a',
+  },
+
+  // Ciano
+  CYAN: {
+    50: '#e6fcfa',
+    100: '#bff7f0',
+    200: '#7eeadd',
+    300: '#47d1bc',
+    400: '#2bb39c',
+    500: '#1e8c7a',
+    600: '#16695c',
+    700: '#0d4237',
+  },
+
+  // Escala de cinzas
   GRAY: {
-    50: '#FAFAFA',   // Quase branco
-    100: '#F5F5F5',  // Cinza muito claro
-    200: '#EEEEEE',  // Cinza claro
-    300: '#E0E0E0',  // Cinza médio claro
-    400: '#BDBDBD',  // Cinza médio
-    500: '#9E9E9E',  // Cinza
-    600: '#757575',  // Cinza escuro
-    700: '#616161',  // Cinza mais escuro
-    800: '#424242',  // Cinza muito escuro
-    900: '#212121',  // Quase preto
+    50: '#f9fafb',
+    100: '#f3f4f6',
+    200: '#e5e7eb',
+    300: '#d1d5db',
+    400: '#9ca3af',
+    500: '#6b7280',
+    600: '#4b5563',
+    700: '#374151',
+    800: '#1f2937',
+    900: '#181818',
   },
-  
-  // Cores de estado com melhor contraste
-  SUCCESS: '#4CAF50',  // Verde para sucesso
-  WARNING: '#FF9800',  // Laranja para avisos
-  ERROR: '#F44336',    // Vermelho para erros
-  INFO: '#2196F3',     // Azul para informações
+
+  // Cores de estado
+  SUCCESS: '#47d16a',
+  WARNING: '#eb894f',
+  ERROR: '#eb4f4f',
+  INFO: '#47a3d1',
 };
 
 // Social Media

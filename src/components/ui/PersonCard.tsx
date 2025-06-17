@@ -27,7 +27,7 @@ const PersonCard = ({ person, index = 0 }: PersonCardProps) => {
       </div>
       <div className="p-5">
         <h3 className="text-xl font-bold mb-1">{person.name}</h3>
-        <p className="text-primary font-semibold mb-3">{person.role}</p>
+        <p className="text-secondary font-semibold mb-3">{person.role}</p>
         <p className="text-gray-600 mb-4">{person.description}</p>
         
         {person.socialMedia && (
@@ -37,7 +37,7 @@ const PersonCard = ({ person, index = 0 }: PersonCardProps) => {
                 href={person.socialMedia.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-primary transition-colors"
+                className="text-gray-500 hover:text-accent transition-colors"
                 aria-label={`Instagram de ${person.name}`}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -50,7 +50,7 @@ const PersonCard = ({ person, index = 0 }: PersonCardProps) => {
                 href={person.socialMedia.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-primary transition-colors"
+                className="text-gray-500 hover:text-accent transition-colors"
                 aria-label={`Twitter de ${person.name}`}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -63,7 +63,7 @@ const PersonCard = ({ person, index = 0 }: PersonCardProps) => {
                 href={person.socialMedia.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-primary transition-colors"
+                className="text-gray-500 hover:text-accent transition-colors"
                 aria-label={`Facebook de ${person.name}`}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

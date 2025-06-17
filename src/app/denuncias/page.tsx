@@ -69,47 +69,54 @@ const DenunciasPage = () => {
   const renderDenunciaCard = (denuncia: Denuncia) => (
     <motion.div
       key={denuncia.id}
-      className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden mb-6 hover:shadow-xl transition-shadow duration-300"
+      className="bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300"
       variants={itemVariants}
     >
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-4">
-          <h3 className="text-xl font-bold text-gray-900 leading-tight">{denuncia.title}</h3>
-          <span className={`text-xs px-3 py-1 rounded-full font-semibold whitespace-nowrap ${getStatusBadgeClass(denuncia.status)}`}>
+      {denuncia.image ? (
+        <div className="relative h-48">
+          <Image
+            src={denuncia.image}
+            alt={denuncia.title}
+            className="object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+      ) : (
+        <div className="h-48 bg-gray-100 flex items-center justify-center">
+          <svg className="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+      )}
+      <div className="p-5">
+        <div className="flex justify-between items-center mb-2">
+          <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${getStatusBadgeClass(denuncia.status)}`}>
             {getStatusText(denuncia.status)}
           </span>
         </div>
-        <p className="text-gray-700 mb-6 leading-relaxed">{denuncia.description}</p>
+        <h3 className="text-xl font-bold mb-2 text-gray-900">{denuncia.title}</h3>
+        <p className="text-gray-700 mb-4">{denuncia.description.length > 120 ? `${denuncia.description.substring(0, 120)}...` : denuncia.description}</p>
         
-        <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+        <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
+          <span className="flex items-center bg-gray-50 px-3 py-1 rounded-md">
+            <svg className="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            {new Date(denuncia.date).toLocaleDateString('pt-BR')}
+          </span>
+          
           {denuncia.location && (
             <span className="flex items-center bg-gray-50 px-3 py-1 rounded-md">
-              <svg className="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <svg className="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
               {denuncia.location}
             </span>
           )}
-          <span className="flex items-center bg-gray-50 px-3 py-1 rounded-md">
-            <svg className="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2z"></path>
-            </svg>
-            {new Date(denuncia.date).toLocaleDateString('pt-BR')}
-          </span>
         </div>
       </div>
-      
-      {denuncia.image && (
-        <div className="relative w-full h-48 border-t border-gray-200">
-          <Image 
-            src={denuncia.image}
-            alt={denuncia.title}
-            fill
-            className="object-cover"
-          />
-        </div>
-      )}
     </motion.div>
   );
 
@@ -117,7 +124,7 @@ const DenunciasPage = () => {
     <>
       <Header />
       <main className="min-h-screen py-16">
-      <section className="bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 py-20 text-black">
+      <section className="bg-gradient-to-br from-primary via-primary-dark to-secondary py-20 text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -125,8 +132,8 @@ const DenunciasPage = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-black">Denúncias</h1>
-            <p className="text-lg md:text-xl mb-8 text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">Denúncias</h1>
+            <p className="text-lg md:text-xl mb-8 text-yellow-100">
               Faça sua denúncia e ajude a combater a corrupção e as irregularidades na gestão pública.
             </p>
           </motion.div>
@@ -137,6 +144,21 @@ const DenunciasPage = () => {
         <div className="container mx-auto px-4">
           <Tabs
             tabs={[
+              { 
+                id: 'nova', 
+                label: 'Nova Denúncia',
+                content: (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="max-w-3xl mx-auto"
+                  >
+                    <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Envie sua Denúncia</h2>
+                    <DenunciaForm />
+                  </motion.div>
+                )
+              },
               { 
                 id: 'sobre', 
                 label: 'Sobre as Denúncias',
@@ -206,7 +228,7 @@ const DenunciasPage = () => {
                           onClick={() => setFilteredStatus(null)}
                           className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                             !filteredStatus 
-                              ? 'bg-yellow-500 text-black shadow-md' 
+                              ? 'bg-primary text-black shadow-md' 
                               : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-gray-400'
                           }`}
                         >
@@ -216,7 +238,7 @@ const DenunciasPage = () => {
                           onClick={() => setFilteredStatus('resolvida')}
                           className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                             filteredStatus === 'resolvida' 
-                              ? 'bg-yellow-500 text-black shadow-md' 
+                              ? 'bg-primary text-black shadow-md' 
                               : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-gray-400'
                           }`}
                         >
@@ -226,7 +248,7 @@ const DenunciasPage = () => {
                           onClick={() => setFilteredStatus('em_analise')}
                           className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                             filteredStatus === 'em_analise' 
-                              ? 'bg-yellow-500 text-black shadow-md' 
+                              ? 'bg-primary text-black shadow-md' 
                               : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-gray-400'
                           }`}
                         >
@@ -241,7 +263,9 @@ const DenunciasPage = () => {
                       animate="visible"
                     >
                       {filteredDenuncias.length > 0 ? (
-                        filteredDenuncias.map(renderDenunciaCard)
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {filteredDenuncias.map(renderDenunciaCard)}
+                        </div>
                       ) : (
                         <div className="bg-white p-12 rounded-lg shadow-lg border border-gray-200 text-center">
                           <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
@@ -254,21 +278,6 @@ const DenunciasPage = () => {
                         </div>
                       )}
                     </motion.div>
-                  </motion.div>
-                )
-              },
-              { 
-                id: 'nova', 
-                label: 'Nova Denúncia',
-                content: (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="max-w-3xl mx-auto"
-                  >
-                    <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Envie sua Denúncia</h2>
-                    <DenunciaForm />
                   </motion.div>
                 )
               }
@@ -298,13 +307,13 @@ const DenunciasPage = () => {
                 href="https://instagram.com/mblceara"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-gray-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-100 hover:text-black transition-all duration-200 shadow-md"
+                className="bg-white text-gray-900 px-8 py-3 rounded-lg font-bold hover:bg-cyan-50 hover:text-accent transition-all duration-200 shadow-md"
               >
                 Siga no Instagram
               </a>
               <a
                 href="/camisa"
-                className="bg-yellow-500 text-black px-8 py-3 rounded-lg font-bold hover:bg-yellow-400 transition-all duration-200 shadow-md"
+                className="bg-primary text-black px-8 py-3 rounded-lg font-bold hover:bg-primary-dark transition-all duration-200 shadow-md"
               >
                 Adquira sua Camisa
               </a>

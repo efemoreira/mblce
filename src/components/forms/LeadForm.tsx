@@ -37,7 +37,7 @@ const LeadForm = ({
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -67,7 +67,7 @@ const LeadForm = ({
       } else {
         setError(result.message);
       }
-    } catch (err) {
+    } catch {
       setError('Ocorreu um erro ao enviar o formulário. Tente novamente mais tarde.');
     } finally {
       setLoading(false);

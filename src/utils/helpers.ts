@@ -1,11 +1,11 @@
-// Helper functions for the application
+import { Event } from "@/types";
 
 /**
  * Format date to Brazilian format (DD/MM/YYYY)
  */
 export const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('pt-BR');
+  return date.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 };
 
 /**
@@ -13,7 +13,7 @@ export const formatDate = (dateString: string): string => {
  */
 export const formatDateTime = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  return date.toLocaleDateString('pt-BR', { timeZone: 'UTC' }) + ' ' + date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
 };
 
 /**
@@ -75,7 +75,7 @@ export const translateStatus = (status: 'pendente' | 'em_analise' | 'resolvida' 
 /**
  * Submit form to Google Script and handle response
  */
-export const submitFormToGoogleScript = async (url: string, data: Record<string, any>): Promise<{ success: boolean, message: string }> => {
+export const submitFormToGoogleScript = async (url: string, data: Record<string, unknown>): Promise<{ success: boolean, message: string }> => {
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -95,4 +95,55 @@ export const submitFormToGoogleScript = async (url: string, data: Record<string,
     console.error('Erro ao enviar formulário:', error);
     return { success: false, message: error instanceof Error ? error.message : 'Erro desconhecido ao enviar o formulário' };
   }
+};
+
+/**
+ * Check if an event is currently active and should be displayed
+ */
+export const isEventActive = (event: Event): boolean => {
+  // Se isActive está explicitamente definido como false, não mostrar
+  if (event.isActive === false) return false;
+  
+  // Se não há data definida, considerar ativo por padrão
+  if (!event.date) return event.isActive === true;
+  
+  // Verificar se o evento não passou ainda (considerando a data final se existir)
+  const currentDate = new Date();
+  const eventEndDate = event.endDate ? new Date(event.endDate) : new Date(event.date);
+  
+  // Adicionar um dia completo à data do evento para que eventos do dia atual ainda sejam considerados ativos
+  eventEndDate.setDate(eventEndDate.getDate() + 1);
+  
+  return currentDate < eventEndDate;
+};
+
+/**
+ * Get events that should be displayed (active and not past)
+ */
+export const getActiveEvents = (events: Event[]): Event[] => {
+  return events.filter(isEventActive);
+};
+
+/**
+ * Sort events by date (closest first)
+ */
+export const sortEventsByDate = (events: Event[]): Event[] => {
+  return [...events].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateA.getTime() - dateB.getTime();
+  });
+};
+
+/**
+ * Check if an event is happening soon (within next 7 days)
+ */
+export const isEventSoon = (event: Event): boolean => {
+  if (!event.date) return false;
+  
+  const currentDate = new Date();
+  const eventDate = new Date(event.date);
+  const daysDifference = Math.ceil((eventDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24));
+  
+  return daysDifference >= 0 && daysDifference <= 7;
 };

@@ -1,15 +1,49 @@
 // Types for MBL Ceará website
 
+export interface EventScheduleItem {
+  time: string;
+  activity: string;
+  description?: string;
+  speaker?: string;
+}
+
+export interface EventSpeaker {
+  id: string;
+  name: string;
+  title: string;
+  bio?: string;
+  image?: string;
+}
+
+export interface EventDetails {
+  whatToExpect?: string;
+  schedule?: EventScheduleItem[];
+  speakers?: EventSpeaker[];
+  highlights?: string[];
+  objectives?: string[];
+  multiDay?: {
+    [key: string]: {
+      date: string;
+      title: string;
+      schedule: EventScheduleItem[];
+    }
+  };
+}
+
 export interface Event {
   id: string;
   title: string;
   date: string;
+  endDate?: string; // Para eventos de múltiplos dias
   location: string;
   description: string;
   image: string;
   link?: string;
   isHighlight?: boolean;
   tags?: string[];
+  details?: EventDetails;
+  registrationUrl?: string;
+  isActive?: boolean; // Para controlar se o evento deve ser mostrado
 }
 
 export interface Person {
@@ -57,6 +91,8 @@ export interface FormData {
   subject?: string;
   size?: 'P' | 'M' | 'G' | 'GG' | 'XG';
 }
+
+
 
 export interface MenuItem {
   name: string;

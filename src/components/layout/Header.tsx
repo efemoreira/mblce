@@ -9,7 +9,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed w-full bg-[#181818] z-50 shadow-sm border-b-4 border-yellow-400">
+    <header className="fixed w-full bg-black z-50 shadow-sm border-b-4 border-primary">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <motion.div
@@ -17,7 +17,7 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-2xl font-bold text-yellow-500">MBL Ceará</span>
+            <span className="text-2xl font-bold text-primary">MBL Ceará</span>
           </motion.div>
         </Link>
 
@@ -28,8 +28,8 @@ const Header = () => {
               <li key={item.path}>
                 <Link
                   href={item.path}
-                  className={`font-medium hover:text-yellow-600 transition-colors ${
-                    pathname === item.path ? 'text-yellow-600' : 'text-white'
+                  className={`font-medium hover:text-accent transition-colors ${
+                    pathname === item.path ? 'text-accent' : 'text-white'
                   }`}
                 >
                   {item.name}
@@ -78,13 +78,13 @@ const Header = () => {
         }}
         transition={{ duration: 0.3 }}
       >
-        <ul className="flex flex-col px-4 py-4 bg-[#181818] border-t">
+        <ul className="flex flex-col px-4 py-4 bg-black border-t">
           {menuItems.map((item) => (
             <li key={item.path} className="py-2">
               <Link
                 href={item.path}
-                className={`block font-medium hover:text-yellow-600 transition-colors ${
-                  pathname === item.path ? 'text-yellow-600' : 'text-white'
+                className={`block font-medium hover:text-accent transition-colors ${
+                  pathname === item.path ? 'text-accent' : 'text-white'
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >

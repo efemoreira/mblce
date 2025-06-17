@@ -12,6 +12,7 @@ export default function Camisa() {
   const sizes = ["P", "M", "G", "GG", "XG"];
   const [selectedSize, setSelectedSize] = useState("");
   const [activeView, setActiveView] = useState("frente"); // "frente" ou "costas"
+  const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -31,12 +32,16 @@ export default function Camisa() {
     setFormData({ ...formData, size });
   };
   
+  const toggleAccordion = (index: number) => {
+    setActiveAccordion(activeAccordion === index ? null : index);
+  };
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
   
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!formData.size) {
@@ -66,7 +71,7 @@ export default function Camisa() {
       } else {
         setError(result.message);
       }
-    } catch (err) {
+    } catch {
       setError("Ocorreu um erro ao enviar o formulário. Tente novamente mais tarde.");
     } finally {
       setLoading(false);
@@ -395,13 +400,39 @@ export default function Camisa() {
                 ].map((item, index) => (
                   <motion.div
                     key={index}
-                    className="bg-white rounded-lg shadow p-6"
+                    className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
-                    <h3 className="text-lg font-bold mb-2">{item.question}</h3>
-                    <p className="text-gray-600">{item.answer}</p>
+                    <button
+                      onClick={() => toggleAccordion(index)}
+                      className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-inset"
+                    >
+                      <h3 className="text-lg font-bold text-gray-900 pr-4">{item.question}</h3>
+                      <motion.div
+                        animate={{ rotate: activeAccordion === index ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="flex-shrink-0"
+                      >
+                        <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </motion.div>
+                    </button>
+                    <motion.div
+                      initial={false}
+                      animate={{
+                        height: activeAccordion === index ? "auto" : 0,
+                        opacity: activeAccordion === index ? 1 : 0
+                      }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-4">
+                        <p className="text-gray-600 leading-relaxed">{item.answer}</p>
+                      </div>
+                    </motion.div>
                   </motion.div>
                 ))}
               </div>

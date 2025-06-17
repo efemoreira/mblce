@@ -9,33 +9,48 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        black: '#181818',
+        white: '#ffffff',
+        yellow: {
+          50: '#fffbe6',
+          100: '#fff6bf',
+          200: '#ffe066',
+          300: '#ffd633',
+          400: '#fbd913', // Amarelo principal
+          500: '#f1b921', // Amarelo queimado
+          600: '#cfa10f',
+          700: '#a67c00',
+        },
+        orange: {
+          50: '#fff3e6',
+          100: '#ffe0cc',
+          200: '#ffc299',
+          300: '#ffad80',
+          400: '#eb894f', // Laranja principal
+          500: '#c96c2b',
+          600: '#a6531a',
+          700: '#7a3a0a',
+        },
+        cyan: {
+          50: '#e6fcfa',
+          100: '#bff7f0',
+          200: '#7eeadd',
+          300: '#47d1bc', // Ciano principal
+          400: '#2bb39c',
+          500: '#1e8c7a',
+          600: '#16695c',
+          700: '#0d4237',
+        },
         primary: {
-          DEFAULT: '#0E3B6E', // Azul escuro igual frentecontraocrimece
-          light: '#1D4F8C',
-          dark: '#092950',
+          DEFAULT: '#fbd913', // Amarelo principal
+          dark: '#f1b921', // Amarelo queimado
         },
         secondary: {
-          DEFAULT: '#E22D2D', // Vermelho igual frentecontraocrimece
-          light: '#FF3D3D',
-          dark: '#C41F1F',
+          DEFAULT: '#eb894f', // Laranja principal
         },
-        yellow: {
-          50: '#fffef7',
-          100: '#fffbeb',
-          200: '#fef3c7',
-          300: '#fde68a',
-          400: '#fcd34d',
-          500: '#fbbf24', // Amarelo principal
-          600: '#f1b921', // Amarelo destaque
-          700: '#b8860b',
-        },
-        // Cores secundárias e de accent
         accent: {
-          light: '#fffbeb',
-          DEFAULT: '#f59e0b',
-          dark: '#b45309',
+          DEFAULT: '#47d1bc', // Ciano principal
         },
-        // Sistema de cinzas melhorado
         gray: {
           50: '#f9fafb',
           100: '#f3f4f6',
@@ -46,32 +61,17 @@ const config: Config = {
           600: '#4b5563',
           700: '#374151',
           800: '#1f2937',
-          900: '#111827',
+          900: '#181818', // Preto
         },
-        // Cores semânticas
         success: {
-          light: '#d1fae5',
-          DEFAULT: '#10b981',
-          dark: '#047857',
-        },
-        warning: {
-          light: '#fef3c7',
-          DEFAULT: '#f59e0b',
-          dark: '#d97706',
+          DEFAULT: '#47d16a', // Verde complementar
         },
         error: {
-          light: '#fee2e2',
-          DEFAULT: '#ef4444',
-          dark: '#dc2626',
+          DEFAULT: '#eb4f4f', // Vermelho complementar
         },
         info: {
-          light: '#dbeafe',
-          DEFAULT: '#3b82f6',
-          dark: '#1d4ed8',
+          DEFAULT: '#47a3d1', // Azul complementar
         },
-        // Cores principais mantidas para compatibilidade
-        black: '#181818',
-        white: '#ffffff',
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],

@@ -10,18 +10,180 @@ export const events: Event[] = [
     image: "/images/mbl-day.jpg",
     link: "/eventos/mbl-day",
     isHighlight: true,
-    tags: ["política", "renovação", "evento"]
+    isActive: true,
+    registrationUrl: "/eventos/mbl-day",
+    tags: ["política", "renovação", "evento"],
+    details: {
+      whatToExpect: "Este evento reunirá membros, simpatizantes e lideranças do MBL para discutir temas relevantes para o futuro político do Ceará e do Brasil. Os participantes terão a oportunidade de interagir com palestrantes renomados, participar de workshops e expandir sua rede de contatos.",
+      schedule: [
+        {
+          time: "09:00",
+          activity: "Credenciamento e café da manhã",
+          description: "Recepção dos participantes com café da manhã de boas-vindas"
+        },
+        {
+          time: "10:00",
+          activity: "Abertura oficial com coordenadores",
+          description: "Apresentação dos coordenadores e abertura oficial do evento"
+        },
+        {
+          time: "11:00",
+          activity: "Palestra principal",
+          description: "Palestra magna sobre o futuro da política brasileira",
+          speaker: "Convidado especial"
+        },
+        {
+          time: "12:30",
+          activity: "Almoço",
+          description: "Intervalo para almoço e networking"
+        },
+        {
+          time: "14:00",
+          activity: "Workshops temáticos",
+          description: "Workshops simultâneos sobre diferentes temas políticos"
+        },
+        {
+          time: "16:00",
+          activity: "Coffee break",
+          description: "Pausa para café e networking"
+        },
+        {
+          time: "16:30",
+          activity: "Painel de discussão",
+          description: "Mesa redonda com especialistas e coordenadores"
+        },
+        {
+          time: "18:00",
+          activity: "Encerramento",
+          description: "Considerações finais e encerramento do evento"
+        }
+      ],
+      highlights: [
+        "Palestras com grandes nomes da política nacional",
+        "Workshops sobre comunicação política e mobilização",
+        "Sessão de autógrafos com lançamentos de livros",
+        "Networking com lideranças e membros de todo o Brasil"
+      ]
+    }
   },
   {
     id: "congresso-mbl-2025",
     title: "Congresso Nacional MBL 2025",
     date: "2025-09-20",
+    endDate: "2025-09-21",
     location: "Brasília, DF",
     description: "Congresso anual que reúne coordenadores e membros de todo o Brasil para discutir os rumos do movimento.",
     image: "/images/congresso-mbl.jpg",
     link: "/eventos/congresso",
     isHighlight: true,
-    tags: ["congresso", "nacional", "política"]
+    isActive: true,
+    registrationUrl: "/eventos/congresso",
+    tags: ["congresso", "nacional", "política"],
+    details: {
+      whatToExpect: "O Congresso Nacional do MBL reúne anualmente coordenadores e membros de todo o Brasil para discutir os rumos do movimento e as estratégias para o futuro.",
+      objectives: [
+        "Fortalecer a integração entre os núcleos regionais do MBL",
+        "Definir as diretrizes políticas para o próximo ano",
+        "Capacitar lideranças regionais em temas estratégicos",
+        "Promover o intercâmbio de experiências entre as regionais",
+        "Avaliar os resultados das ações realizadas no último ano"
+      ],
+      multiDay: {
+        day1: {
+          date: "2025-09-20",
+          title: "Dia 1 - 20 de setembro",
+          schedule: [
+            {
+              time: "08:30",
+              activity: "Credenciamento",
+              description: "Recepção e credenciamento dos participantes"
+            },
+            {
+              time: "09:30",
+              activity: "Cerimônia de abertura",
+              description: "Abertura oficial do congresso"
+            },
+            {
+              time: "10:30",
+              activity: "Palestra magna: \"O futuro da direita no Brasil\"",
+              description: "Palestra principal sobre o cenário político nacional"
+            },
+            {
+              time: "12:00",
+              activity: "Almoço",
+              description: "Intervalo para almoço"
+            },
+            {
+              time: "14:00",
+              activity: "Grupos de trabalho temáticos",
+              description: "Divisão em grupos para discussões específicas"
+            },
+            {
+              time: "17:00",
+              activity: "Encerramento do dia",
+              description: "Síntese dos trabalhos do primeiro dia"
+            }
+          ]
+        },
+        day2: {
+          date: "2025-09-21",
+          title: "Dia 2 - 21 de setembro",
+          schedule: [
+            {
+              time: "09:00",
+              activity: "Apresentação das deliberações dos grupos",
+              description: "Cada grupo apresenta suas conclusões"
+            },
+            {
+              time: "10:30",
+              activity: "Debate sobre as propostas",
+              description: "Discussão geral sobre as propostas apresentadas"
+            },
+            {
+              time: "12:00",
+              activity: "Almoço",
+              description: "Intervalo para almoço"
+            },
+            {
+              time: "14:00",
+              activity: "Votação das diretrizes",
+              description: "Votação das diretrizes e propostas para o próximo ano"
+            },
+            {
+              time: "16:00",
+              activity: "Cerimônia de encerramento",
+              description: "Encerramento oficial do congresso"
+            }
+          ]
+        }
+      },
+      speakers: [
+        {
+          id: "palestrante-1",
+          name: "Palestrante 1",
+          title: "Especialista em Política",
+          image: "/images/palestrante-1.jpg"
+        },
+        {
+          id: "palestrante-2",
+          name: "Palestrante 2",
+          title: "Especialista em Política",
+          image: "/images/palestrante-2.jpg"
+        },
+        {
+          id: "palestrante-3",
+          name: "Palestrante 3",
+          title: "Especialista em Política",
+          image: "/images/palestrante-3.jpg"
+        },
+        {
+          id: "palestrante-4",
+          name: "Palestrante 4",
+          title: "Especialista em Política",
+          image: "/images/palestrante-4.jpg"
+        }
+      ]
+    }
   },
   {
     id: "palestra-economia",
@@ -32,7 +194,48 @@ export const events: Event[] = [
     image: "/images/palestra-economia.jpg",
     link: "/eventos/palestra-economia",
     isHighlight: false,
-    tags: ["economia", "palestra", "liberdade"]
+    isActive: true,
+    registrationUrl: "/eventos/palestra-economia",
+    tags: ["economia", "palestra", "liberdade"],
+    details: {
+      whatToExpect: "Uma palestra esclarecedora sobre os fundamentos da economia livre e como esses princípios podem contribuir para o desenvolvimento econômico e social do país.",
+      schedule: [
+        {
+          time: "19:00",
+          activity: "Abertura",
+          description: "Apresentação do palestrante e do tema"
+        },
+        {
+          time: "19:15",
+          activity: "Palestra: Economia e Liberdade",
+          description: "Apresentação principal sobre os princípios da economia livre",
+          speaker: "Especialista em Economia"
+        },
+        {
+          time: "20:30",
+          activity: "Sessão de perguntas",
+          description: "Perguntas e respostas com o público"
+        },
+        {
+          time: "21:00",
+          activity: "Encerramento",
+          description: "Considerações finais e networking"
+        }
+      ]
+    }
+  },
+  // Exemplo de evento inativo - não será mostrado na página
+  {
+    id: "evento-passado",
+    title: "Workshop: Comunicação Política",
+    date: "2025-05-01",
+    location: "Centro Cultural, Fortaleza",
+    description: "Workshop sobre técnicas de comunicação política e estratégias de marketing político.",
+    image: "/images/workshop-comunicacao.jpg",
+    link: "/eventos/workshop-comunicacao",
+    isHighlight: false,
+    isActive: false, // Este evento não será mostrado
+    tags: ["workshop", "comunicação", "marketing político"]
   }
 ];
 
@@ -169,4 +372,37 @@ export const menuItems: MenuItem[] = [
     name: "Denúncias",
     path: "/denuncias"
   }
+];
+
+export const reels = [
+  {
+    id: "reel-001",
+    title: "A importância da liberdade econômica",
+    description: "Entenda como a liberdade econômica pode transformar o Brasil.",
+    videoUrl: "https://www.youtube.com/watch?v=example1",
+    thumbnail: "/images/reel-1.jpg",
+    date: "2025-05-01",
+    tags: ["liberdade", "economia", "Brasil"]
+  },
+  {
+    id: "reel-002",
+    title: "Reforma Administrativa: O que muda?",
+    description: "Saiba mais sobre a reforma administrativa e como ela pode impactar o serviço público.",
+    videoUrl: "https://www.youtube.com/watch?v=example2",
+    thumbnail: "/images/reel-2.jpg",
+    date: "2025-05-02",
+    tags: ["reforma", "administração", "serviço público"]
+  },
+]
+
+export const heroSlides = [
+  {
+    id: "slide-1",
+    title: "Junte-se ao MBL Ceará",
+    subtitle: "Movimento Brasil Livre",
+    description: "Faça parte do movimento que luta por liberdade, transparência e renovação política no Ceará.",
+    imageUrl: "/images/banner-1.jpg",
+    buttonText: "Saiba Mais",
+    buttonLink: "/sobre"
+  },
 ];
