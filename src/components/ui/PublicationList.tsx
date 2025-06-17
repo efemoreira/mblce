@@ -1,17 +1,16 @@
-import { Post } from '@/types';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { formatDate, truncateText } from '@/utils/helpers';
+import { WPPost } from '@/types';
 
 interface PublicationListProps {
-  posts: Post[];
+  posts: WPPost[];
   maxPosts?: number;
 }
 
 const PublicationList = ({ posts, maxPosts }: PublicationListProps) => {
-  const displayPosts = maxPosts ? posts.slice(0, maxPosts) : posts;
-  
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -34,7 +33,7 @@ const PublicationList = ({ posts, maxPosts }: PublicationListProps) => {
       initial="hidden"
       animate="show"
     >
-      {displayPosts.map((post) => (
+      {posts.map((post) => (
         <motion.div
           key={post.id}
           className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
@@ -42,8 +41,8 @@ const PublicationList = ({ posts, maxPosts }: PublicationListProps) => {
         >
           <div className="relative h-48">
             <Image
-              src={post.image || '/images/placeholder.jpg'}
-              alt={post.title}
+              src={post.yoast_head_json?.og_image?.[0]?.url || '/images/placeholder.jpg'}
+              alt={post.title.rendered}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -55,14 +54,14 @@ const PublicationList = ({ posts, maxPosts }: PublicationListProps) => {
                 {post.category}
               </span>
               <span className="text-gray-500 text-sm">
-                {formatDate(post.date)}
+                {new Date(post.date).toLocaleDateString('pt-BR')}
               </span>
             </div>
-            <h3 className="text-xl font-bold mb-2">{post.title}</h3>
-            <p className="text-gray-600 mb-4">{truncateText(post.excerpt, 100)}</p>
+            <h3 className="text-xl font-bold mb-2" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+            <p className="text-gray-600 mb-4" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium text-gray-700">
-                Por {post.author}
+                Por {post.yoast_head_json?.author || 'Autor Desconhecido'}
               </span>
               <Link 
                 href={`/posts/${post.id}`} 

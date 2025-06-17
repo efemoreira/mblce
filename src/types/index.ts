@@ -92,8 +92,6 @@ export interface FormData {
   size?: 'P' | 'M' | 'G' | 'GG' | 'XG';
 }
 
-
-
 export interface MenuItem {
   name: string;
   path: string;
@@ -104,4 +102,33 @@ export interface SocialMediaLink {
   name: string;
   url: string;
   icon: string;
+}
+
+export interface WPPost {
+  id: number;
+  title: { rendered: string };
+  content: { rendered: string };
+  excerpt: { rendered: string };
+  date: string;
+  category: string;
+  yoast_head_json?: {
+    author?: string;
+    og_image?: OG_Image[];
+  };
+}
+
+interface OG_Image {
+  url: string;
+  width?: number;
+  height?: number;
+}
+
+export interface Reel {
+  id: string;
+  title: string;
+  videoUrl: string;
+  thumbnail: string;
+  // description?: string;
+  // date?: string;
+  // tags?: string[];
 }
