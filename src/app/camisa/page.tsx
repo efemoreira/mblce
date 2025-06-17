@@ -125,7 +125,7 @@ export default function Camisa() {
               >
                 <div className="relative w-full max-w-md aspect-square mb-8">
                   <Image
-                    src={`/images/camisa/CAMISETA-MBLCE ${selectedColor} - ${activeView}.png`}
+                    src={`/images/camisa/CAMISETA-MBLCE_${selectedColor}-${activeView}-preview.png`}
                     alt={`Camisa MBL Ceará - cor ${selectedColor} - vista ${activeView}`}
                     fill
                     className="object-contain"
@@ -321,20 +321,6 @@ export default function Camisa() {
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
                       />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="message" className="block mb-2 text-sm font-medium">
-                        Observações (opcional)
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={3}
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
-                      ></textarea>
                     </div>
                     
                     <div className="pt-4">
