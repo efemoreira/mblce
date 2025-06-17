@@ -1,4 +1,4 @@
-import { Event, Person, Post, Denuncia, MenuItem, Reel } from "@/types";
+import { Event, Person, Denuncia, MenuItem, Reel } from "@/types";
 
 export const heroSlides = [
   {

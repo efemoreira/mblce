@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,10 +6,9 @@ import { WPPost } from '@/types';
 
 interface PublicationListProps {
   posts: WPPost[];
-  maxPosts?: number;
 }
 
-const PublicationList = ({ posts, maxPosts }: PublicationListProps) => {
+const PublicationList = ({ posts }: PublicationListProps) => {
 
   const container = {
     hidden: { opacity: 0 },

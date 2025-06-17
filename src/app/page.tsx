@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Header from "@/components/layout/Header";
@@ -66,7 +65,7 @@ export default function Home() {
                 </p>
               </motion.div>
 
-              <PublicationList posts={posts} maxPosts={3} />
+              <PublicationList posts={posts} />
 
               <div className="text-center mt-10">
                 <Link href="/posts" className="inline-block bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary transition-all duration-200 shadow-md">
