@@ -304,7 +304,7 @@ const DenunciasPage = () => {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a
-                href="https://instagram.com/mblceara"
+                href="https://www.instagram.com/mblivreceara"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white text-gray-900 px-8 py-3 rounded-lg font-bold hover:bg-cyan-50 hover:text-accent transition-all duration-200 shadow-md"

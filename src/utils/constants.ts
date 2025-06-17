@@ -73,7 +73,7 @@ export const THEME = {
 
 // Social Media
 export const SOCIAL_MEDIA = {
-  INSTAGRAM: 'https://instagram.com/mblceara',
+  INSTAGRAM: 'https://www.instagram.com/mblivreceara',
   TWITTER: 'https://twitter.com/mblceara',
   FACEBOOK: 'https://facebook.com/mblceara',
   YOUTUBE: 'https://youtube.com/mblceara',

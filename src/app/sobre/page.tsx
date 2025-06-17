@@ -26,10 +26,10 @@ export default function Sobre() {
                   ease: "easeInOut"
                 } 
               }}
-              className="absolute inset-0 h-[120%]"
+              className="absolute inset-0 h-[120%] bg-primary-dark"
             >
               <Image 
-                src="/images/sobre-bg.jpg" 
+                src="/images/LOGO-MBLCE-PRETO.png" 
                 alt="MBL Ceará" 
                 fill 
                 className="object-cover brightness-[0.4]"
@@ -46,7 +46,7 @@ export default function Sobre() {
               className="max-w-3xl"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Sobre o MBL Ceará</h1>
-              <p className="text-xl md:text-2xl mb-6 text-gray-300 leading-relaxed">
+              <p className="text-xl md:text-2xl mb-6 text-gray-100 leading-relaxed">
                 Somos um movimento suprapartidário que visa mobilizar cidadãos em favor de uma democracia mais transparente e de um Estado eficiente.
               </p>
             </motion.div>
@@ -81,7 +81,7 @@ export default function Sobre() {
                 className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-lg"
               >
                 <Image
-                  src="/images/missao.jpg"
+                  src="/images/sobre/encontro.jpeg"
                   alt="MBL em ação"
                   fill
                   className="object-cover"

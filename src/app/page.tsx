@@ -162,7 +162,7 @@ export default function Home() {
               
               <div className="text-center mt-10">
                 <a 
-                  href="https://instagram.com/mblce" 
+                  href="https://www.instagram.com/mblivreceara" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-block bg-gradient-to-r from-accent to-cyan-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-cyan-600 hover:to-accent transition-all duration-200 shadow-md"
