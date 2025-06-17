@@ -241,47 +241,73 @@ export const events: Event[] = [
 
 export const team: Person[] = [
   {
-    id: "coordenador-estadual",
-    name: "Rafael Silva",
+    id: "daniel",
+    name: "Daniel",
     role: "Coordenador Estadual",
-    description: "Advogado e ativista político, coordena as ações do MBL no Ceará desde 2018.",
-    image: "/images/coordenador.jpg",
+    description: "Coordenador estadual do MBL Ceará.",
+    image: "/images/sobre/coordenadores/Daniel.png",
     socialMedia: {
-      instagram: "https://instagram.com/rafaelsilva",
-      twitter: "https://twitter.com/rafaelsilva",
+      instagram: "https://instagram.com/daniel",
     }
   },
   {
-    id: "coordenador-juridico",
-    name: "Mariana Costa",
-    role: "Coordenadora Jurídica",
-    description: "Advogada especialista em Direito Constitucional, responsável pela área jurídica do movimento.",
-    image: "/images/coord-juridico.jpg",
+    id: "derich",
+    name: "Derich",
+    role: "Coordenador Jurídico",
+    description: "Responsável pela área jurídica do movimento.",
+    image: "/images/sobre/coordenadores/Derich.png",
     socialMedia: {
-      instagram: "https://instagram.com/marianacosta",
-      linkedin: "https://linkedin.com/in/marianacosta",
+      instagram: "https://instagram.com/derich",
     }
   },
   {
-    id: "coordenador-comunicacao",
-    name: "Pedro Almeida",
+    id: "eliezer",
+    name: "Eliezer",
     role: "Coordenador de Comunicação",
-    description: "Jornalista com experiência em marketing político, responsável pela estratégia de comunicação.",
-    image: "/images/coord-comunicacao.jpg",
+    description: "Responsável pela comunicação do MBL Ceará.",
+    image: "/images/sobre/coordenadores/Eliezer.png",
     socialMedia: {
-      instagram: "https://instagram.com/pedroalmeida",
-      twitter: "https://twitter.com/pedroalmeida",
+      instagram: "https://instagram.com/eliezer",
     }
   },
   {
-    id: "coordenador-mobilizacao",
-    name: "Carla Mendes",
-    role: "Coordenadora de Mobilização",
-    description: "Cientista política, responsável pela mobilização e campanhas do movimento no estado.",
-    image: "/images/coord-mobilizacao.jpg",
+    id: "matheus-janja",
+    name: "Matheus Janja",
+    role: "Coordenador de Mobilização",
+    description: "Responsável pela mobilização e campanhas.",
+    image: "/images/sobre/coordenadores/Matheus-Janja.png",
     socialMedia: {
-      instagram: "https://instagram.com/carlamendes",
-      facebook: "https://facebook.com/carlamendes",
+      instagram: "https://instagram.com/matheusjanja",
+    }
+  },
+  {
+    id: "pedro-arthur",
+    name: "Pedro Arthur",
+    role: "Coordenador de Núcleos",
+    description: "Responsável pelos núcleos regionais.",
+    image: "/images/sobre/coordenadores/Pedro-Arthur.png",
+    socialMedia: {
+      instagram: "https://instagram.com/pedroarthur",
+    }
+  },
+  {
+    id: "thiago",
+    name: "Thiago",
+    role: "Coordenador de Eventos",
+    description: "Organizador dos eventos do MBL Ceará.",
+    image: "/images/sobre/coordenadores/Thiago.png",
+    socialMedia: {
+      instagram: "https://instagram.com/thiago",
+    }
+  },
+  {
+    id: "victor",
+    name: "Victor",
+    role: "Coordenador de Projetos",
+    description: "Responsável pelos projetos especiais.",
+    image: "/images/sobre/coordenadores/Victor.png",
+    socialMedia: {
+      instagram: "https://instagram.com/victor",
     }
   }
 ];

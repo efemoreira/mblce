@@ -3,6 +3,7 @@ import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { menuItems } from '@/data';
+import Image from 'next/image';
 
 const Header = () => {
   const pathname = usePathname();
@@ -17,7 +18,14 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-2xl font-bold text-primary">MBL Ceará</span>
+            <Image
+              src="/images/LOGO-MBLCE-BRANCO.png"
+              alt="Logo MBL Ceará"
+              height={48}
+              width={160}
+              className="h-10 w-auto md:h-12"
+              priority
+            />
           </motion.div>
         </Link>
 

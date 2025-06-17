@@ -47,7 +47,7 @@ export default function Eventos() {
   return (
     <>
       <Header />
-      <main>
+      <main className="min-h-screen py-16">
         {/* Hero Section */}
         <section className="bg-black text-white py-20">
           <div className="container mx-auto px-4">

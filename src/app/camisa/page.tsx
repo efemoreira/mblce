@@ -10,6 +10,8 @@ import { GOOGLE_SCRIPT_URL } from "@/utils/constants";
 
 export default function Camisa() {
   const sizes = ["P", "M", "G", "GG", "XG"];
+  const colors = ["preto", "branco"];
+  const [selectedColor, setSelectedColor] = useState("preto");
   const [selectedSize, setSelectedSize] = useState("");
   const [activeView, setActiveView] = useState("frente"); // "frente" ou "costas"
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
@@ -19,6 +21,7 @@ export default function Camisa() {
     email: "",
     phone: "",
     size: "",
+    color: "preto",
     address: "",
     message: "",
   });
@@ -26,6 +29,11 @@ export default function Camisa() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  const handleColorSelect = (color: string) => {
+    setSelectedColor(color);
+    setFormData({ ...formData, color });
+  };
   
   const handleSizeSelect = (size: string) => {
     setSelectedSize(size);
@@ -43,35 +51,36 @@ export default function Camisa() {
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
     if (!formData.size) {
       setError("Por favor, selecione um tamanho de camisa.");
       return;
     }
-    
+    if (!formData.color) {
+      setError("Por favor, selecione uma cor de camisa.");
+      return;
+    }
     setLoading(true);
     setError(null);
-    
     try {
       const fd = new FormData();
       Object.entries(formData).forEach(([key, value]) => {
         fd.append(key, value);
       });
       const result = await submitFormToGoogleScript(GOOGLE_SCRIPT_URL.CAMISA_FORM, fd);
-      
       if (result.success) {
         setSuccess(true);
-        
         // Reset form
         setFormData({
           name: "",
           email: "",
           phone: "",
           size: "",
+          color: "preto",
           address: "",
           message: "",
         });
         setSelectedSize("");
+        setSelectedColor("preto");
       } else {
         setError(result.message);
       }
@@ -85,7 +94,7 @@ export default function Camisa() {
   return (
     <>
       <Header />
-      <main>
+      <main className="min-h-screen py-16">
         {/* Hero Section */}
         <section className="bg-black text-white py-20">
           <div className="container mx-auto px-4">
@@ -116,11 +125,31 @@ export default function Camisa() {
               >
                 <div className="relative w-full max-w-md aspect-square mb-8">
                   <Image
-                    src={`/images/camisa-${activeView}.jpg`}
-                    alt={`Camisa MBL Ceará - vista ${activeView}`}
+                    src={`/images/camisa/CAMISETA-MBLCE ${selectedColor} - ${activeView}.png`}
+                    alt={`Camisa MBL Ceará - cor ${selectedColor} - vista ${activeView}`}
                     fill
                     className="object-contain"
                   />
+                </div>
+                <div className="flex space-x-4 mb-4">
+                  {colors.map(color => (
+                    <button
+                      key={color}
+                      type="button"
+                      onClick={() => handleColorSelect(color)}
+                      className={`w-10 h-10 flex items-center justify-center rounded-full border-2 transition-all duration-300 ${
+                        selectedColor === color
+                          ? 'border-yellow-500 shadow-md scale-110'
+                          : 'border-gray-300 hover:border-yellow-400'
+                      }`}
+                      aria-label={`Selecionar cor ${color}`}
+                    >
+                      <span
+                        className="w-6 h-6 rounded-full border border-gray-400"
+                        style={{ backgroundColor: color === 'preto' ? '#000' : '#fff', display: 'inline-block' }}
+                      />
+                    </button>
+                  ))}
                 </div>
                 
                 <div className="flex space-x-4">
@@ -248,6 +277,32 @@ export default function Camisa() {
                             }`}
                           >
                             {size}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <label className="block mb-2 text-sm font-medium">
+                        Cor*
+                      </label>
+                      <div className="flex flex-wrap gap-3">
+                        {colors.map(color => (
+                          <button
+                            key={color}
+                            type="button"
+                            onClick={() => handleColorSelect(color)}
+                            className={`w-10 h-10 flex items-center justify-center rounded-full border-2 transition-all duration-300 ${
+                              selectedColor === color
+                                ? 'border-yellow-500 shadow-md scale-110'
+                                : 'border-gray-300 hover:border-yellow-400'
+                            }`}
+                            aria-label={`Selecionar cor ${color}`}
+                          >
+                            <span
+                              className="w-6 h-6 rounded-full border border-gray-400"
+                              style={{ backgroundColor: color === 'preto' ? '#000' : '#fff', display: 'inline-block' }}
+                            />
                           </button>
                         ))}
                       </div>

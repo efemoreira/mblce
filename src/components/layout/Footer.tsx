@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { CONTACT, SOCIAL_MEDIA } from '@/utils/constants';
 import { menuItems } from '@/data';
 
@@ -11,7 +12,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-secondary">MBL Ceará</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <Image
+                src="/images/LOGO-MBLCE-PRETO.png"
+                alt="Logo MBL Ceará"
+                height={48}
+                width={160}
+                className="h-10 w-auto md:h-12"
+                priority
+              />
+            </div>
             <p className="mb-4 text-gray-700">
               Movimento Brasil Livre Ceará trabalha por um Brasil mais livre, justo e próspero.
             </p>

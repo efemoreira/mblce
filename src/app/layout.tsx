@@ -22,6 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <meta name="apple-mobile-web-app-title" content="MBLCE" />
       <body className={`${roboto.variable} antialiased`}>
         {children}
       </body>
