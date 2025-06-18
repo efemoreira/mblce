@@ -19,6 +19,9 @@ jobs:
       - name: Build
         run: npm run build # The build command of your project
 
+      - name: Export static site
+        run: npx next export
+
       - name: Criar .htaccess para SPA
         run: |
           echo 'RewriteEngine On
