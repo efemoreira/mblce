@@ -240,7 +240,7 @@ export const team: Person[] = [
   {
     id: "derich",
     name: "Derich",
-    role: "Coordenador Jurídico",
+    role: "Coordenador de Mobilização",
     description: "Responsável pela mobilização e campanhas.",
     image: "/images/sobre/coordenadores/Derich.png",
     socialMedia: {
@@ -260,7 +260,7 @@ export const team: Person[] = [
   {
     id: "matheus-janja",
     name: "Matheus Janja",
-    role: "Coordenador de Mobilização",
+    role: "Coordenador Jurídico",
     description: "Responsável pela área jurídica do movimento.",
     image: "/images/sobre/coordenadores/Matheus-Janja.png",
     socialMedia: {
