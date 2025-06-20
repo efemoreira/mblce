@@ -231,20 +231,20 @@ export const team: Person[] = [
     id: "daniel",
     name: "Daniel",
     role: "Coordenador Estadual",
-    description: "Coordenador estadual do MBL Ceará.",
+    description: "Responsável pela imagem e videos.",
     image: "/images/sobre/coordenadores/Daniel.png",
     socialMedia: {
-      instagram: "https://instagram.com/daniel",
+      // instagram: "https://instagram.com/daniel",
     }
   },
   {
     id: "derich",
     name: "Derich",
     role: "Coordenador Jurídico",
-    description: "Responsável pela área jurídica do movimento.",
+    description: "Responsável pela mobilização e campanhas.",
     image: "/images/sobre/coordenadores/Derich.png",
     socialMedia: {
-      instagram: "https://instagram.com/derich",
+      // instagram: "https://instagram.com/derich",
     }
   },
   {
@@ -254,27 +254,27 @@ export const team: Person[] = [
     description: "Responsável pela comunicação do MBL Ceará.",
     image: "/images/sobre/coordenadores/Eliezer.png",
     socialMedia: {
-      instagram: "https://instagram.com/eliezer",
+      // instagram: "https://instagram.com/eliezer",
     }
   },
   {
     id: "matheus-janja",
     name: "Matheus Janja",
     role: "Coordenador de Mobilização",
-    description: "Responsável pela mobilização e campanhas.",
+    description: "Responsável pela área jurídica do movimento.",
     image: "/images/sobre/coordenadores/Matheus-Janja.png",
     socialMedia: {
-      instagram: "https://instagram.com/matheusjanja",
+      // instagram: "https://instagram.com/matheusjanja",
     }
   },
   {
     id: "pedro-arthur",
     name: "Pedro Arthur",
     role: "Coordenador de Núcleos",
-    description: "Responsável pelos núcleos regionais.",
+    description: "Porta-voz do núcleo.",
     image: "/images/sobre/coordenadores/Pedro-Arthur.png",
     socialMedia: {
-      instagram: "https://instagram.com/pedroarthur",
+      instagram: "https://instagram.com/pedroarthurce",
     }
   },
   {
@@ -284,7 +284,7 @@ export const team: Person[] = [
     description: "Organizador dos eventos do MBL Ceará.",
     image: "/images/sobre/coordenadores/Thiago.png",
     socialMedia: {
-      instagram: "https://instagram.com/thiago",
+      // instagram: "https://instagram.com/thiago",
     }
   },
   {
@@ -294,7 +294,7 @@ export const team: Person[] = [
     description: "Responsável pelos projetos especiais.",
     image: "/images/sobre/coordenadores/Victor.png",
     socialMedia: {
-      instagram: "https://instagram.com/victor",
+      // instagram: "https://instagram.com/victor",
     }
   }
 ];
